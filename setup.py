@@ -10,7 +10,7 @@ setup(
     author="nathfavour",
     author_email="116535483+nathfavour@users.noreply.github.com",
     description="A Python library to interface with Ollama running locally",
-    url="https://github.com/yourusername/ollama-chat-lib",
+    url="https://github.com/Deepersensor/ollama-chat-lib",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
