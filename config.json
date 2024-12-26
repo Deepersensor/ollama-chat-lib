@@ -1,0 +1,8 @@
+{
+    "url": "http://localhost:11434/api/generate",
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "model": "qwen2.5-coder:0.5b",
+    "stream": false
+}
