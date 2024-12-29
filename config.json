@@ -1,8 +1,8 @@
 {
-    "url": "http://localhost:11434/api/generate",
+    "host": "http://localhost:11434",
     "headers": {
         "Content-Type": "application/json"
     },
-    "model": "qwen2.5-coder:0.5b",
+    "model": "tinyllama:latest",
     "stream": false
 }
