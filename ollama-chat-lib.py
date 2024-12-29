@@ -1,29 +1,23 @@
-import requests
-import json
 import sys
 import os
 import argparse
+import json
+import ollama
 
 def load_config():
     with open(os.path.join(os.path.dirname(__file__), 'config.json'), 'r') as f:
         return json.load(f)
 
 def generate_response(prompt, url, headers, model, stream):
-    data = {
-        "model": model,
-        "prompt": prompt,
-        "stream": stream
-    }
-
-    response = requests.post(url, headers=headers, data=json.dumps(data))
-
-    if response.status_code == 200:
-        response_text = response.text
-        data = json.loads(response_text)
-        actual_response = data["response"]
-        return actual_response
+    client = ollama.Client(base_url=url)
+    if stream:
+        text = ""
+        for chunk in client.generate(prompt=prompt, model=model, stream=True):
+            text += chunk
+        return text
     else:
-        return f"Error: {response.status_code}, {response.text}"
+        result = client.generate(prompt=prompt, model=model, stream=False)
+        return result
 
 if __name__ == "__main__":
     config = load_config()
