@@ -36,6 +36,39 @@ To ensure everything is working correctly, you can run the included unit tests:
 python -m unittest discover tests
 ```
 
+## 🖥️ Interacting with the Models via cURL/Wget
+
+Below are some example commands you can copy and modify to interact with your local Ollama instance directly:
+
+### Using cURL
+
+```bash
+curl -X POST \
+     -H "Content-Type: application/json" \
+     -d '{
+       "model": "qwen2.5-coder:0.5b",
+       "messages": [{"role": "user", "content": "Hello, how are you?"}],
+       "stream": false
+     }' \
+     http://localhost:11434/chat
+```
+
+### Using Wget
+
+```bash
+wget --method=POST \
+     --header="Content-Type: application/json" \
+     --body-data='{
+       "model": "qwen2.5-coder:0.5b",
+       "messages": [{"role": "user", "content": "Hello, how are you?"}],
+       "stream": false
+     }' \
+     -O - \
+     http://localhost:11434/chat
+```
+
+You can replace the model name, request body, or host URL as needed.
+
 ## 🤝 Contributing
 
 We welcome contributions! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
